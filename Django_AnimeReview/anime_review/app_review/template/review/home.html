@@ -1,0 +1,56 @@
+{% extends 'review/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Top Anime</h2>
+      <image src="https://cdn.myanimelist.net/images/anime/1444/108005.jpg" width="250">
+      <p>Re:Zero kara Hajimeru Isekai Seikatsu 2nd Season</p>
+      <h3>ช่องทางติดตาม</h3>
+      <li class="nav-item">
+          <a class="nav-link active" href="https://www.netflix.com/th-en/">Netflix</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="https://aisplay.ais.co.th/portal/">AIS Play</a>
+        </li>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Comment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <h2>เรื่องที่แนะนำ</h2>
+      <h5>ล่าสุดเมื่อ: 07/10/2020</h5>
+      <image src="https://www.online-station.net/pic/X2NvbnRlbnQvMjAyMC8wOTA5LzE3MzkzMy90aHVtYm5haWwvS3VtYTAxXzEyMDBfNjI4LmpwZyZ3PTExNDAmaD01OTc" width="400">
+      <p>Kuma Kuma Kuma Bear</p>
+      <p>{{ detail }}</p>
+      <br>
+      <h2>แนะนำสำหรับคุณ</h2>
+      <h5>ล่าสุดเมื่อ: 05/10/2020</h5>
+      <image src="https://static.zerochan.net/Maou.Gakuin.no.Futekigousha.full.2512908.jpg" width="400">
+      <p>Maou Gakuin no Futekigousha</p>
+      <p>{{ detail }}</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+{% endblock content %}
+
