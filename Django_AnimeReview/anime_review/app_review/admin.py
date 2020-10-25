@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(poster)
+admin.site.register(borader)
+admin.site.register(spoiler)
