@@ -1,5 +1,16 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
+from django_resized import ResizedImageField
+
+class MyModel(models.Model):
+    ...
+    image1 = ResizedImageField(size=[500, 300], upload_to='whatever')
+    image2 = ResizedImageField(size=[100, 100], crop=['top', 'left'], upload_to='whatever')
+    image3 = ResizedImageField(size=[100, 100], crop=['middle', 'center'], upload_to='whatever')
+    image4 = ResizedImageField(size=[500, 300], quality=75, upload_to='whatever')
+    image5 = ResizedImageField(size=[500, 300], upload_to='whatever', force_format='PNG')
+
+
 
 
 # class example(models.Model): 
@@ -9,7 +20,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class poster(models.Model):
     name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
     photo = models.ImageField(upload_to='site_media')
 
 
@@ -37,6 +47,7 @@ class Allboard(models.Model):
     favor = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
     detail = models.TextField(blank=True,null=True)
     reviews = models.TextField(blank=True,null=True)
+    
 
 
 
@@ -44,12 +55,21 @@ class Allboard(models.Model):
     		return '{}-{}'.format(self.header,self.category)
 
 
-class commentation(models.Model):
+class Comment(models.Model):
+    poster = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    user = models.CharField(max_length=200)
+    text = models.TextField()
+    date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
 
-    comment = models.TextField(blank=True,null=True)
-    favor = models.IntegerField(default=0, validators=[MaxValueValidator(100), MinValueValidator(0)])
-    dropdown = models.TextField(blank=True,null=True)
-    mute = models.BooleanField(default=True)
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
+
+
 
 
 
